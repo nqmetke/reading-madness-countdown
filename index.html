@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <title>March Reading Madness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            background: #f4f1e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #3e2723;
+        }
+        
+        .countdown-container {
+            text-align: center;
+            background: #faf8f3;
+            padding: 4rem 3rem;
+            border: 3px solid #8b7765;
+            box-shadow: 
+                0 0 0 1px #d4c4b0,
+                0 10px 40px rgba(62, 39, 35, 0.2);
+            position: relative;
+        }
+    
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #5d4037;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+        }
+        
+        .countdown {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+        }
+        
+        .time-unit {
+            background: #fff;
+            box-shadow: inset 0 0 20px rgba(139, 119, 101, 0.1);
+            min-width: 120px;
+        }
+        
+        .time-value {
+            font-size: 4rem;
+            font-weight: 400;
+            display: block;
+            color: #4a342e;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            color: #8b7765;
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <div class="countdown">
+            <div class="time-unit">
+                <span class="time-value" id="days">00</span>
+                <span class="time-label">Days</span>
+            </div>
+            <div class="time-unit">
+                <span class="time-value" id="hours">00</span>
+                <span class="time-label">Hours</span>
+            </div>
+            <div class="time-unit">
+                <span class="time-value" id="minutes">00</span>
+                <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-unit">
+                <span class="time-value" id="seconds">00</span>
+                <span class="time-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const targetYear = now.getMonth() >= 2 ? now.getFullYear() + 1 : now.getFullYear();
+            const target = new Date(targetYear, 2, 1); // March is month 2 (0-indexed)
+            
+            const difference = target - now;
+            
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
