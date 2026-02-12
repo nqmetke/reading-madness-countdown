@@ -74,6 +74,63 @@
             color: #8b7765;
             font-variant: small-caps;
         }
+        @media (max-width: 768px) {
+    .countdown-container {
+        padding: 2rem 1.5rem;
+        max-width: 90vw;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .countdown {
+        gap: 1rem;
+    }
+    
+    .time-unit {
+        min-width: 70px;
+    }
+    
+    .time-value {
+        font-size: 2.5rem;
+    }
+    
+    .time-label {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    h1 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+    
+    .countdown {
+        gap: 0.5rem;
+    }
+    
+    .time-unit {
+        min-width: 60px;
+    }
+    
+    .time-value {
+        font-size: 2rem;
+    }
+    
+    .time-label {
+        font-size: 0.65rem;
+    }
+}
     </style>
 </head>
 <body>
